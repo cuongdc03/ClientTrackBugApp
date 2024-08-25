@@ -17,9 +17,7 @@ export const request = (method) => async (url, { query, body = {}, headers, sign
   const addCSRFToken = METHODS_WITH_CSRF_TOKEN.includes(method);
   const addBody = METHODS_WITH_BODY.includes(method);
   const fullUrl = `${BASE_URL}${url}`;
-  console.log('Full URL:', fullUrl);
   try {
-    console.log('Request Body:', getUrlPathWithQuery({ url: fullUrl, query }));
     const response = await fetch(getUrlPathWithQuery({ url: fullUrl, query }), {
       method,
       mode: 'cors', 
@@ -49,10 +47,12 @@ export const customFetch = {
 
 export const getUrlPathWithQuery = ({ url: partialUrl, query = {} } = {}) => {
   try {
+    const url = new URL(partialUrl);
     const searchParams = new URLSearchParams({
-      ...Object.fromEntries(partialUrl.searchParams),
+      ...Object.fromEntries(url.searchParams),
       ...query
     });
+    console.log(searchParams)
     return `${partialUrl.pathname}${searchParams.toString() ? `?${searchParams.toString()}` : ''}`;
   } catch (error) {
     console.error('Invalid URL:', partialUrl);
