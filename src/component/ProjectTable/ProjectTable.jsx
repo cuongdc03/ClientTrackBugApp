@@ -7,7 +7,7 @@ import { FaBug } from 'react-icons/fa'
 import moment from 'moment'
 import { ENDPOINTS } from '../../apis/constants'
 import { get, post, put, remove } from '../../apis/api'
-import { useNavigate } from 'react-router-dom' // Import useNavigate
+import { useNavigate } from 'react-router-dom'
 
 const ProjectTable = () => {
   const [projects, setProjects] = useState([])
@@ -20,7 +20,7 @@ const ProjectTable = () => {
     description: ''
   })
 
-  const navigate = useNavigate() // Initialize useNavigate
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -83,7 +83,7 @@ const ProjectTable = () => {
   }
 
   const handleRowClick = (params) => {
-    navigate(`/bugs/${params.row.id}`) // Navigate to the bugs page for the selected project
+    navigate(`/bugs/${params.row.id}`)
   }
 
   if (loading) {
@@ -140,7 +140,6 @@ const ProjectTable = () => {
           pageSize={10}
           rowsPerPageOptions={[10]}
           disableSelectionOnClick
-          onRowClick={handleRowClick} // Handle row click
           className='bg-white'
         />
       </div>

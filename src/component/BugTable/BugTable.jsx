@@ -4,7 +4,6 @@ import { IconButton } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/Delete'
 const BugDataGrid = ({ bugs, handleEdit, handleDelete }) => {
-  // Define the columns for the DataGrid
   const columns = [
     { field: 'id', headerName: 'ID', width: 150 },
     { field: 'title', headerName: 'Title', width: 250 },

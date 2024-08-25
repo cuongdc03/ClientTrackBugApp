@@ -26,7 +26,7 @@ const SignIn = () => {
       const response = await post(ENDPOINTS.LOGIN, data)
       toast.success('Logged in successfully')
       setTokenToLocalStorage(response.token)
-      navigate(path.dashboard)
+      navigate(path.projects)
     } catch (error) {
       toast.error(error.message || 'Login failed!')
     }

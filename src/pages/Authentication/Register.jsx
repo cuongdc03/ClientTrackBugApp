@@ -18,7 +18,6 @@ const RegisterForm = () => {
   const onSubmit = async () => {
     const { password, confirmPassword, ...rest } = getValues()
 
-    // Validate that passwords match
     if (password !== confirmPassword) {
       toast.error('Passwords do not match!')
       return
@@ -33,7 +32,7 @@ const RegisterForm = () => {
       if (response) {
         toast.success('Registration successful!')
         setTokenToLocalStorage(response.token)
-        navigate(path.dashboard)
+        navigate(path.projects)
       } else {
         throw new Error('Registration failed')
       }
