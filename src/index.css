@@ -54,7 +54,6 @@
     --gray-color-900: #18191c;
     --orange-color-700: #ff7000;
 
-    /* Shadow */
     --shadow-lg-yellow-700: 0 12px 48px 0 var(--yellow-color-700-50);
   }
 
@@ -97,5 +96,4 @@
     @apply bg-main text-foreground;
   }
 }
-/* Add this to your global CSS file */
 @import url('https://unpkg.com/leaflet@1.9.4/dist/leaflet.css');

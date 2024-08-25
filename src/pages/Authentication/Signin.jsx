@@ -1,36 +1,36 @@
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { FaEnvelope, FaLock, FaSignInAlt } from 'react-icons/fa';
-import { toast } from 'react-toastify';
-import { schema } from '../../component/utils/rules';
-import { post } from '../../apis/api'; 
-import { setTokenToLocalStorage } from '../../component/utils/localStorage';
-import { ENDPOINTS } from '../../apis/constants';
-import { useNavigate } from 'react-router-dom';
-import { path } from '../../routes/path';
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { FaEnvelope, FaLock, FaSignInAlt } from 'react-icons/fa'
+import { toast } from 'react-toastify'
+import { schema } from '../../component/utils/rules'
+import { post } from '../../apis/api'
+import { setTokenToLocalStorage } from '../../component/utils/localStorage'
+import { ENDPOINTS } from '../../apis/constants'
+import { useNavigate } from 'react-router-dom'
+import { path } from '../../routes/path'
 
-const loginSchema = schema.pick(['email', 'password']);
+const loginSchema = schema.pick(['email', 'password'])
 
 const SignIn = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
     formState: { errors }
   } = useForm({
     resolver: yupResolver(loginSchema)
-  });
+  })
 
   const onSubmit = async (data) => {
     try {
-      const response = await post(ENDPOINTS.LOGIN, data);
-      toast.success('Logged in successfully');
-      setTokenToLocalStorage(response.token);
+      const response = await post(ENDPOINTS.LOGIN, data)
+      toast.success('Logged in successfully')
+      setTokenToLocalStorage(response.token)
       navigate(path.dashboard)
     } catch (error) {
-      toast.error(error.message || 'Login failed!');
+      toast.error(error.message || 'Login failed!')
     }
-  };
+  }
 
   return (
     <div className='h-screen flex items-center justify-center bg-gray-100'>
@@ -80,7 +80,7 @@ const SignIn = () => {
         </form>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SignIn;
+export default SignIn
